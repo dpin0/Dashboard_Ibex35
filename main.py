@@ -1,3 +1,8 @@
-import yfinance as yf
-pdf = yf.Ticker("BBVA.MC").history(start="2021-10-01", end="2026-10-01",
- interval="1d", auto_adjust=False)
+from pyspark.sql import SparkSession 
+from pyspark.sql.functions import *
+from pyspark.sql.types import *
+from pyspark.sql.window import *
+from src.controlador.ControladorPrincipal import ControladorPrincipal
+
+if __name__ == "__main__":
+    ControladorPrincipal()

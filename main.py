@@ -1,3 +1,7 @@
+import sys, os
+os.environ["PYSPARK_PYTHON"] = sys.executable
+os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
+
 from pyspark.sql import SparkSession 
 from pyspark.sql.functions import *
 from pyspark.sql.types import *

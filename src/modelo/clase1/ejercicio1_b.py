@@ -18,12 +18,16 @@ def historico_ibex(spark):
 
     print("Ej1-b")
 
+    df_unidos = None
+
     for i in TICKERS:
-        df = descargar_historico(spark, i, "2024/10/01", "2026/10/02")
-        df.write.mode("overwrite").parquet("data/lake/bronze/ibex")
-
-    df_unidos = df if df_unidos is None else df_unidos.union(df)
-
-    show(df_unidos)
-
+        df = descargar_historico(spark, i, "2024-10-01", "2026-10-02")
+        if df is None:
+            continue
+        if df_unidos is None:
+            df_unidos = df
+        else:
+            df_unidos = df_unidos.union(df)
+        
+    df_unidos.write.mode("overwrite").parquet("data/lake/bronze/ibex")
     return df_unidos

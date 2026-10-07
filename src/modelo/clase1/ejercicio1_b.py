@@ -16,8 +16,6 @@ TICKERS = [
 
 def historico_ibex(spark):
 
-    print("Ej1-b")
-
     df_unidos = None
 
     for i in TICKERS:

@@ -1,11 +1,11 @@
 import yfinance as yf
 from pyspark.sql.functions import *
-from src.modelo.clase1.ejercicio1_a import descargar_historico
+from src.modelo.ejercicios.ejercicio1_a import descargar_historico
 
 
 #Ej1-b
 
-# Uso de IA: Claude. Lista de Tickers de las empresas para recorrerlas de cara a descargar su histórico
+# Uso de IA: Claude Sonnet 5.5. Pedi la lista de Tickers de las empresas para recorrerlas de cara a descargar su histórico
 TICKERS = [
     "ACS.MC", "ACX.MC", "AENA.MC", "AMS.MC", "ANA.MC", "ANE.MC", "BBVA.MC",
     "BKT.MC", "CABK.MC", "CLNX.MC", "COL.MC", "ELE.MC", "ENG.MC", "FDR.MC",

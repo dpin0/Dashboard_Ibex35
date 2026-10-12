@@ -1,4 +1,6 @@
-def mostrar_nulos_1a():
+#vista ejercicio 1a
+ 
+def admite_nulos_1a():
     print("Ej1-a")
     print("Date no admite nulos, es el día de la sesión")
     print("Ticker no admite nulos, identifica el activo")

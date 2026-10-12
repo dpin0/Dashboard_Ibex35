@@ -1,3 +1,4 @@
+#vista ejercicio 1b
 
 def mostrar_inicio_1b():
     print("Ej1-b")

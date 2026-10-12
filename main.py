@@ -1,6 +1,8 @@
 import sys, os
 os.environ["PYSPARK_PYTHON"] = sys.executable
 os.environ["PYSPARK_DRIVER_PYTHON"] = sys.executable
+os.environ["HADOOP_HOME"] = r"C:\hadoop"
+os.environ["PATH"] += os.pathsep + r"C:\hadoop\bin"
 
 from pyspark.sql import SparkSession 
 from pyspark.sql.functions import *

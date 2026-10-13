@@ -15,6 +15,7 @@ from src.modelo.ejercicios.ejercicio2_b import ejercicio2b, RUTA_BRONZE_SENTIMIE
 from src.vista.vista_ejercicio2_a import mostrar_ejercicio_2a
 from src.vista.vista_ejercicio2_b import mostrar_ejercicio_2b
 from src.modelo.ejercicios.ejercicio2_c import ejercicio2c
+from src.vista.vista_ejercicio2_c import mostrar_ejercicio_2c
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
@@ -23,13 +24,24 @@ def ControladorPrincipal():
 
     # Ejercicios 1a y 1b
     '''
-    Descomentar para ejecutar de nuevo
+    # Descomentar para ejecutar de nuevo ->
     df = historico_ibex(spark_session)
     '''
     # Ejercicio 1c
     df_completo, df_det = leer_1c(spark_session)
     mostrar_ejercicio_1c(df_completo, df_det)
 
+    # Ejercicio 2a
+    df_sentimiento = ejercicio2a(spark_session)
+    mostrar_ejercicio_2a(df_sentimiento)
+
+    # Ejercicio 2b
+    n_filas = ejercicio2b(df_sentimiento)
+    mostrar_ejercicio_2b(n_filas, RUTA_BRONZE_SENTIMIENTO)
+
+    # Ejercicio 2c
+    antes, despues = ejercicio2c(spark_session, df_sentimiento)
+    mostrar_ejercicio_2c(antes, despues)
 
     print("FIN")
     spark_session.stop()

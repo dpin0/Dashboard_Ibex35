@@ -9,5 +9,5 @@ def mostrar_ejercicio_1c(df, df_det):
     df_det.show(5, truncate=False)
 
     print(
-        "Ventaja de leer solo unas columnas determinadas frente a todo el DataFrame:"
+        "Ventaja de leer solo unas columnas determinadas frente a todo el DataFrame: "
     )

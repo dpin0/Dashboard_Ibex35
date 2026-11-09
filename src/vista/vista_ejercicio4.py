@@ -1,5 +1,5 @@
 def mostrar_ejercicio_4(r):
-    print(" Ejercicio 4: MERGE sobre (Ticker, Fecha) ===")
+    print(" Ejercicio 4: MERGE sobre (Ticker, Fecha)")
     print(f"Versión actual antes de cargar: {r['version_actual']}")
     print(f"Filas iniciales: {r['filas_inicial']}")
     print(f"Filas tras 1ª ejecución: {r['filas_tras_1']} "
@@ -13,4 +13,6 @@ def mostrar_ejercicio_4(r):
     r["historial"].select("version", "timestamp", "operation",
                           "operationMetrics").show(truncate=False)
 
+      #En el historial aparece la operación CONVERT y que esa versión 0 es el punto de partida del time travel.
+    
     print("Comentario: ")

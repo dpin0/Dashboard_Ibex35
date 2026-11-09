@@ -16,6 +16,8 @@ def mostrar_ejercicio_3(resultados):
           "_delta_log, que contiene el log de transacciones. Dentro hay un "
           "fichero JSON (00000000000000000000.json) que registra la operación "
           "CONVERT con la lista de ficheros Parquet que forman la tabla. "
+          "En el historial aparece esa operación CONVERT como versión 0, "   
+          "que es el punto de partida del time travel. "
           "Cada operación futura (append, overwrite, update...) añadirá una "
           "nueva versión al log, lo que permite ver el historial, hacer "
           "time travel y tener transacciones ACID. Es una operación de "

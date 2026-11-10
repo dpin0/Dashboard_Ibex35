@@ -1,16 +1,13 @@
-from pyspark.sql import functions as F
 from src.modelo.funciones_delta import (
     RUTA_SILVER_IBEX, RUTA_SILVER_EMPRESAS, RUTA_SILVER_SENTIMIENTO,
     leer_delta, anti_join, precios_con_sector, rellenar_sentimiento,
-    construir_hecho, resumen_total
+    construir_hecho, resumen_total, sentimiento_por_sector_dia
 )
 
 def ejercicio11(spark):
     precios = leer_delta(spark, RUTA_SILVER_IBEX)
     empresas = leer_delta(spark, RUTA_SILVER_EMPRESAS)
-    sent = (leer_delta(spark, RUTA_SILVER_SENTIMIENTO)
-            .groupBy("Sector", "Fecha")
-            .agg(F.round(F.avg("Sentimiento"), 2).alias("Sentimiento")))
+    sent = sentimiento_por_sector_dia(leer_delta(spark, RUTA_SILVER_SENTIMIENTO))
 
     p = precios_con_sector(precios, empresas)
 

@@ -3,4 +3,4 @@ from src.modelo.funciones_delta import (
 
 def ejercicio2a(spark, ruta=RUTA_CSV_SENTIMIENTO):
 
-    return spark.read.option("header", True).option("sep", ";").option("inferSchema", True).csv(ruta)
+    return spark.read.option("header", True).option("sep", ";").csv(ruta)

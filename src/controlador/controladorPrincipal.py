@@ -49,8 +49,14 @@ def ControladorPrincipal():
     spark_session = create_spark_session()
     try:
 
-        # Ejercicios 1a y 1b
-        historico_ibex(spark_session)
+        # Ejercicio 1a 
+        df_1a = descargar_historico(spark_session, "BBVA.MC", "2026-09-01", "2026-10-02")
+        admite_nulos_1a(df_1a)
+
+        # Ejercicio 1b
+        mostrar_inicio_1b()
+        df_bronze = historico_ibex(spark_session)
+        mostrar_resultado_1b(df_bronze)
         
         # Ejercicio 1c
         df_completo, df_det = leer_1c(spark_session)

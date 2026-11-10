@@ -117,6 +117,17 @@ def traducir_sectores(df, mapa=MAPA_SECTORES):
     df = df.replace(mapa, subset=["Sector"])
     return df.withColumn("Sector", F.initcap("Sector"))
 
+def limpiar_sentimiento(df):
+    """Silver del sentimiento: ancho->largo si hace falta, fecha y decimales
+    tipados, sectores traducidos, rango 0-100 y sin duplicados."""
+    if "Sector" not in df.columns:      # CSV en formato ancho (una columna por sector)
+        df = a_formato_largo(df, ["Fecha"], None, "Sector", "Sentimiento")
+    df = limpiar_fecha(df, "Fecha")
+    df = limpiar_decimales(df, ["Sentimiento"])
+    df = traducir_sectores(df)
+    return (df.dropna(subset=["Fecha", "Sector", "Sentimiento"])
+              .filter(F.col("Sentimiento").between(0, 100))
+              .dropDuplicates(["Fecha", "Sector"]))
 
 # ------------------------------------------------------------ silver: precios
 def limpiar_precios(df):
@@ -178,6 +189,19 @@ def clave_fecha(df):
     return df.withColumn("FechaKey",
                          F.date_format("Fecha", "yyyyMMdd").cast("int"))
 
+def sentimiento_por_sector_dia(df):
+    """Una fila por (Sector, Fecha). Evita que el left join con los precios
+    multiplique filas si hubiera varios valores el mismo dia."""
+    return (df.groupBy("Sector", "Fecha")
+              .agg(F.round(F.avg("Sentimiento"), 2).alias("Sentimiento")))
+
+
+def calendario_continuo(df, columna="Fecha"):
+    """Un registro por dia natural entre la primera y la ultima fecha de df
+    (incluye fines de semana y festivos: DAX lo exige para time intelligence)."""
+    return (df.agg(F.min(columna).alias("a"), F.max(columna).alias("b"))
+              .select(F.explode(F.sequence("a", "b", F.expr("interval 1 day")))
+                       .alias("Fecha")))
 
 def construir_dim_fecha(precios):
     fechas = clave_fecha(precios.select("Fecha").distinct())

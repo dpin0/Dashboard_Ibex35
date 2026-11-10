@@ -1,10 +1,9 @@
-from pyspark.sql import functions as F
-
 from src.modelo.funciones_delta import (
     RUTA_SILVER_IBEX, RUTA_SILVER_EMPRESAS, RUTA_SILVER_SENTIMIENTO,
     RUTA_GOLD_HECHO, RUTA_GOLD_DIM_EMPRESA, RUTA_GOLD_DIM_FECHA, RUTA_GOLD,
     leer_delta, escribir_delta, anti_join,
     construir_dim_fecha, construir_hecho, anadir_calculos,
+    sentimiento_por_sector_dia, calendario_continuo,
 )
 
 #Ej10
@@ -12,15 +11,11 @@ def ejercicio10(spark):
     precios = leer_delta(spark, RUTA_SILVER_IBEX)
     empresas = leer_delta(spark, RUTA_SILVER_EMPRESAS)
 
-    sentimiento = (
-        leer_delta(spark, RUTA_SILVER_SENTIMIENTO)
-        .groupBy("Sector", "Fecha")
-        .agg(F.round(F.avg("Sentimiento"), 2).alias("Sentimiento"))
-    )
+    sentimiento = sentimiento_por_sector_dia(leer_delta(spark, RUTA_SILVER_SENTIMIENTO))
 
     dim_empresa = empresas.select(
         "Ticker", "Nombre", "Sector", "Industria", "Capitalizacion", "Recomendacion")
-    dim_fecha = construir_dim_fecha(precios)
+    dim_fecha = construir_dim_fecha(calendario_continuo(precios))
 
     hecho = anadir_calculos(construir_hecho(precios, empresas, sentimiento))
 

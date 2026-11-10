@@ -1,24 +1,18 @@
 from pyspark.sql import functions as F
 from src.modelo.funciones_delta import (
-    RUTA_GOLD_HECHO, RUTA_GOLD_DIM_EMPRESA, RUTA_EXPORT,
-    leer_delta, construir_dim_fecha, exportar_parquet,
+    RUTA_GOLD_HECHO, RUTA_GOLD_DIM_EMPRESA, RUTA_GOLD_DIM_FECHA, RUTA_EXPORT,
+    leer_delta, exportar_parquet,
 )
 
 #Ej13
 def ejercicio13(spark):
     hecho = leer_delta(spark, RUTA_GOLD_HECHO)
     dim_empresa = leer_delta(spark, RUTA_GOLD_DIM_EMPRESA)
+    dim_fecha = leer_delta(spark, RUTA_GOLD_DIM_FECHA)  
 
-    # Hecho: solo claves + medidas, redondeadas y ordenadas (comprime mejor)
     for c in ["Open", "High", "Low", "Close", "Var_diaria", "Media_movil_7"]:
         hecho = hecho.withColumn(c, F.round(c, 2))
     hecho = (hecho.withColumn("Var_pct", F.round("Var_pct", 3)).orderBy("Ticker", "FechaKey"))
-
-    # Calendario continuo (sin saltos) entre la primera y la última sesión
-    fechas = (hecho.select(F.to_date(F.col("FechaKey").cast("string"), "yyyyMMdd").alias("Fecha"))
-                   .agg(F.min("Fecha").alias("a"), F.max("Fecha").alias("b"))
-                   .select(F.explode(F.sequence("a", "b", F.expr("interval 1 day"))).alias("Fecha")))
-    dim_fecha = construir_dim_fecha(fechas)
 
     rutas = {
         "fact_cotizaciones": hecho,

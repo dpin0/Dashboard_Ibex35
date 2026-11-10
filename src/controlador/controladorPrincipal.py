@@ -18,6 +18,7 @@ from src.vista.vista_ejercicio2_c import mostrar_ejercicio_2c
 from src.modelo.ejercicios.ejercicio3 import ejercicio3
 from src.vista.vista_ejercicio3 import mostrar_ejercicio_3
 from src.modelo.ejercicios.ejercicio4 import ejercicio4
+from src.vista.vista_ejercicio4 import mostrar_ejercicio_4
 
 from src.modelo.ejercicios.ejercicio5_a import ejercicio5a
 from src.modelo.ejercicios.ejercicio5_b import ejercicio5b
@@ -37,10 +38,10 @@ def ControladorPrincipal():
     spark_session = create_spark_session()
     try:
         # Ejercicios 1a y 1b
-        '''
+        
         # Descomentar para ejecutar de nuevo ->
-        df = historico_ibex(spark_session)
-        '''
+        historico_ibex(spark_session)
+        
         
         # Ejercicio 1c
         df_completo, df_det = leer_1c(spark_session)

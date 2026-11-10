@@ -1,5 +1,5 @@
 def mostrar_ejercicio_5a(r):
-    print("=== Ejercicio 5a: append con columna extra (Close_mas5) ===")
+    print("Ej5-a")
     print(f"¿Delta lo ha rechazado? {r['rechazado']}")
     print(f"Mensaje: {r['mensaje']}")
     print(f"Versión antes: {r['version_antes']} | después: {r['version_despues']}")

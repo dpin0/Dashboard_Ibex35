@@ -1,6 +1,6 @@
 
 def mostrar_ejercicio_5b(r):
-    print("=== Ejercicio 5b: append con mergeSchema=true ===")
+    print("Ej5-b")
     print(f"¿Sigue rechazándolo? {r['rechazado']}")
     print(f"Columnas antes:   {r['columnas_antes']}")
     print(f"Columnas después: {r['columnas_despues']}")

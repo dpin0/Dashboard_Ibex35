@@ -2,7 +2,7 @@
 
 
 def mostrar_ejercicio_3(resultados):
-    print("=== Ejercicio 3: conversión de Parquet a Delta ===")
+    print("Ej3")
     for nombre, (historial, contenido_log) in resultados.items():
         print(f"\n--- Tabla: {nombre} ---")
         historial.select("version", "timestamp", "operation",

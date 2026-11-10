@@ -1,5 +1,5 @@
 def mostrar_ejercicio_4(r):
-    print(" Ejercicio 4: MERGE sobre (Ticker, Fecha)")
+    print("Ej4")
     print(f"Versión actual antes de cargar: {r['version_actual']}")
     print(r["historial_actual"][["version", "timestamp", "operation"]])
     print(f"Filas iniciales: {r['filas_inicial']}")

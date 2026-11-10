@@ -1,5 +1,5 @@
 def mostrar_ejercicio_6(r):
-    print("=== Ejercicio 6: RESTORE al estado del Ej4 ===")
+    print("Ej6")
     print(f"Restaurado a la versión: {r['version']}")
     print(f"Filas antes: {r['filas_antes']} | después: {r['filas_despues']}")
     print(f"Filas del Ej4: {r['filas_ej4']} | ¿coinciden? {r['filas_despues'] == r['filas_ej4']}")

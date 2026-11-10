@@ -9,6 +9,8 @@ def ejercicio3(spark, rutas=None):
             "ibex": RUTA_BRONZE_IBEX,
             "sentimiento": RUTA_BRONZE_SENTIMIENTO,
         }
+    for c in df.columns:
+        df = df.withColumnRenamed(c, c.replace(" ", "_"))
 
     resultados = {}
     for nombre, ruta in rutas.items():

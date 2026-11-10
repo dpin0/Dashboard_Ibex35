@@ -4,13 +4,13 @@ import yfinance as yf
 def descargar_historico(spark, ticker, fecha_ini, fecha_fin):
 
     pdf = yf.Ticker(ticker).history(start=fecha_ini, end=fecha_fin, interval="1d", auto_adjust=False)
-    
+
     if pdf.empty:
         return None
-    
+
     pdf.reset_index(inplace=True)
+    pdf.columns = [c.replace(" ", "_") for c in pdf.columns]
 
     pdf["Ticker"] = ticker
 
     return spark.createDataFrame(pdf)
-

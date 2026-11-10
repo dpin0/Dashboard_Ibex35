@@ -1,4 +1,5 @@
 def mostrar_ejercicio_1c(df, df_det):
+    print("Ej1-c")
     print("Esquema del Parquet:")
     df.printSchema()
 

@@ -1,5 +1,5 @@
 def mostrar_ejercicio_5d(r):
-    print("=== Ejercicio 5d: history() y versionAsOf ===")
+    print("Ej5-d")
     r["historial"].select("version", "timestamp", "operation",
                           "operationParameters").show(truncate=False)
     print(f"Versión leída (antes del 5a): {r['version_antes_5a']}")

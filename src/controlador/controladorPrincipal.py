@@ -10,16 +10,9 @@ from src.vista.vista_ejercicio1_c import mostrar_ejercicio_1c
 
 from src.modelo.ejercicios.ejercicio2_a import ejercicio2a
 from src.modelo.ejercicios.ejercicio2_b import ejercicio2b, RUTA_BRONZE_SENTIMIENTO
-from src.vista.vista_ejercicio2_a import mostrar_ejercicio_2a
-from src.vista.vista_ejercicio2_b import mostrar_ejercicio_2b
 from src.modelo.ejercicios.ejercicio2_c import ejercicio2c
-from src.vista.vista_ejercicio2_c import mostrar_ejercicio_2c
-
 from src.modelo.ejercicios.ejercicio3 import ejercicio3
-from src.vista.vista_ejercicio3 import mostrar_ejercicio_3
 from src.modelo.ejercicios.ejercicio4 import ejercicio4
-from src.vista.vista_ejercicio4 import mostrar_ejercicio_4
-
 from src.modelo.ejercicios.ejercicio5_a import ejercicio5a
 from src.modelo.ejercicios.ejercicio5_b import ejercicio5b
 from src.modelo.ejercicios.ejercicio5_c import ejercicio5c
@@ -27,7 +20,17 @@ from src.modelo.ejercicios.ejercicio5_d import ejercicio5d
 from src.modelo.ejercicios.ejercicio6 import ejercicio6
 from src.modelo.ejercicios.ejercicio8 import ejercicio8
 from src.modelo.ejercicios.ejercicio9 import ejercicio9
+from src.modelo.ejercicios.ejercicio10 import ejercicio10
+from src.modelo.ejercicios.ejercicio11 import ejercicio11
+from src.modelo.ejercicios.ejercicio12 import ejercicio12
+#from src.modelo.ejercicios.ejercicio13 import ejercicio13
 
+
+from src.vista.vista_ejercicio2_a import mostrar_ejercicio_2a
+from src.vista.vista_ejercicio2_b import mostrar_ejercicio_2b
+from src.vista.vista_ejercicio2_c import mostrar_ejercicio_2c
+from src.vista.vista_ejercicio3 import mostrar_ejercicio_3
+from src.vista.vista_ejercicio4 import mostrar_ejercicio_4
 from src.vista.vista_ejercicio5_a import mostrar_ejercicio_5a
 from src.vista.vista_ejercicio5_b import mostrar_ejercicio_5b
 from src.vista.vista_ejercicio5_c import mostrar_ejercicio_5c
@@ -35,6 +38,10 @@ from src.vista.vista_ejercicio5_d import mostrar_ejercicio_5d
 from src.vista.vista_ejercicio6 import mostrar_ejercicio_6
 from src.vista.vista_ejercicio8 import mostrar_ejercicio_8
 from src.vista.vista_ejercicio9 import mostrar_ejercicio_9
+from src.vista.vista_ejercicio10 import mostrar_ejercicio_10
+from src.vista.vista_ejercicio11 import mostrar_ejercicio_11
+from src.vista.vista_ejercicio12 import mostrar_ejercicio_12
+#from src.vista.vista_ejercicio13 import mostrar_ejercicio_13
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
@@ -92,16 +99,29 @@ def ControladorPrincipal():
         # Ejercicio 6
         resultados_6  = ejercicio6(spark_session, resultados_4["version_tras_1"], resultados_4["filas_tras_1"])
         mostrar_ejercicio_6(resultados_6)
-        '''
 
+        # Ejercicio 7 en el pdf
 
-        # Ejercicio 8 
+        # Ejercicio 8 -> justificación en el pdf
         resultados_8 = ejercicio8(spark_session)
         mostrar_ejercicio_8(resultados_8)
 
         # Ejercicio 9
         resultados_9 = ejercicio9(spark_session)
         mostrar_ejercicio_9(resultados_9)
+
+        # Ejercicio 10
+        resultados_10 = ejercicio10(spark_session)
+        mostrar_ejercicio_10(resultados_10)
+        '''
+        # Ejercicio 11 -> justificación en el pdf
+        resultados_11 = ejercicio11(spark_session)
+        mostrar_ejercicio_11(resultados_11)
+        
+        # Ejercicio 12 -> justificación en el pdf
+        resultados_12 = ejercicio12(spark_session)
+        mostrar_ejercicio_12(resultados_12)
+
 
 
         print("FIN")

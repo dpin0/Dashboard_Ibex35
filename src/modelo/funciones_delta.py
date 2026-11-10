@@ -71,6 +71,13 @@ def merge_nuevos(spark, nuevos, ruta):
         .whenNotMatchedInsertAll()
         .execute())
     return contar_filas(spark, ruta)
+
+def resumen_total(df):
+    return (df.groupBy("Sector")
+              .agg(F.count("*").alias("filas"),
+                   F.min("Fecha").alias("desde"),
+                   F.max("Fecha").alias("hasta"))
+              .orderBy("Sector"))
     
 # silver: sentimiento
 def leer_csv_sentimiento(spark, ruta=RUTA_CSV_SENTIMIENTO):

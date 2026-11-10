@@ -17,7 +17,7 @@ def ejercicio6(spark, version, filas_ej4, ruta=RUTA_BRONZE_IBEX):
         "filas_antes": filas_antes,
         "filas_despues": df.count(),
         "filas_ej4": filas_ej4,
-        "bbva": df.filter("Ticker = 'BBVA'").count(),
+        "bbva": df.filter("Ticker = 'BBVA.MC'").count(),
         "columnas": df.columns,
         "historial": historial,
     }

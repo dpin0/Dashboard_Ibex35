@@ -1,49 +1,42 @@
 from delta.tables import DeltaTable
-
-RUTA_BRONZE_IBEX = "data/lake/bronze/ibex"
+from src.modelo.funciones_delta import (
+    RUTA_BRONZE_IBEX, contar_filas, version_actual)
 
 
 def _merge_nuevos(spark, nuevos, ruta):
     destino = DeltaTable.forPath(spark, ruta)
     (destino.alias("d")
         .merge(nuevos.alias("n"),
-               "d.Ticker = n.Ticker AND d.Fecha = n.Fecha")
+               "d.Ticker = n.Ticker AND d.Date = n.Date")
         .whenNotMatchedInsertAll()
         .execute())
-    return spark.read.format("delta").load(ruta).count()
+    return contar_filas(spark, ruta)
 
 
+# Ej4
 def ejercicio4(spark, nuevos, ruta=RUTA_BRONZE_IBEX):
     # Evita insertar dos veces la misma clave si la descarga trae repetidos
-    nuevos = nuevos.dropDuplicates(["Ticker", "Fecha"])
+    nuevos = nuevos.dropDuplicates(["Ticker", "Date"])
 
-    tabla = DeltaTable.forPath(spark, ruta)
+    # Version actual y filas antes de cargar
+    version_antes = version_actual(spark, ruta)
+    historial_actual = DeltaTable.forPath(spark, ruta).history(1).toPandas()
+    filas_inicial = contar_filas(spark, ruta)
 
-    # Versión actual (entero) y filas antes de cargar
-    version_actual = tabla.history(1).select("version").collect()[0][0]
-    historial_actual = tabla.history(1).toPandas()   
-    filas_inicial = spark.read.format("delta").load(ruta).count()
-
-    # 1ª ejecución: deben insertarse los días nuevos
+    # 1ª ejecucion: deben insertarse los dias nuevos
     filas_tras_1 = _merge_nuevos(spark, nuevos, ruta)
+    # Version justo tras el MERGE (la que se usara en el Ej6)
+    version_tras_1 = version_actual(spark, ruta)
 
-    version_tras_1 = DeltaTable.forPath(spark, ruta).history(1) \
-        .select("version").collect()[0][0]
-    
-    # versión justo tras el MERGE (la que se usará en el Ej6)
-    version_tras_1 = DeltaTable.forPath(spark, ruta).history(1) \
-        .select("version").collect()[0][0]
-
-    # 2ª ejecución: no debe cambiar nada (idempotente)
+    # 2ª ejecucion: no debe cambiar nada (idempotente)
     filas_tras_2 = _merge_nuevos(spark, nuevos, ruta)
 
-    historial = DeltaTable.forPath(spark, ruta).history()
-
     return {
-        "historial_actual": historial_actual,                           # NUEVO
-        "version_tras_1": version_tras_1,    
+        "version_actual": version_antes,
+        "historial_actual": historial_actual,
+        "version_tras_1": version_tras_1,
         "filas_inicial": filas_inicial,
         "filas_tras_1": filas_tras_1,
         "filas_tras_2": filas_tras_2,
-        "historial": historial,
+        "historial": DeltaTable.forPath(spark, ruta).history(),
     }

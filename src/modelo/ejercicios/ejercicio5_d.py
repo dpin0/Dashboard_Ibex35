@@ -17,6 +17,6 @@ def ejercicio5d(spark, version_antes_5a, ruta=RUTA_BRONZE_IBEX):
         "columnas_actual": df_actual.columns,
         "filas_antigua": df_antigua.count(),
         "filas_actual": df_actual.count(),
-        "bbva_antigua": df_antigua.filter("Ticker = 'BBVA'").count(),
-        "bbva_actual": df_actual.filter("Ticker = 'BBVA'").count(),
+        "bbva_antigua": df_antigua.filter("Ticker = 'BBVA.MC'").count(),
+        "bbva_actual": df_actual.filter("Ticker = 'BBVA.MC'").count(),
     }

@@ -26,6 +26,7 @@ from src.modelo.ejercicios.ejercicio5_c import ejercicio5c
 from src.modelo.ejercicios.ejercicio5_d import ejercicio5d
 from src.modelo.ejercicios.ejercicio6 import ejercicio6
 from src.modelo.ejercicios.ejercicio8 import ejercicio8
+from src.modelo.ejercicios.ejercicio9 import ejercicio9
 
 from src.vista.vista_ejercicio5_a import mostrar_ejercicio_5a
 from src.vista.vista_ejercicio5_b import mostrar_ejercicio_5b
@@ -33,6 +34,7 @@ from src.vista.vista_ejercicio5_c import mostrar_ejercicio_5c
 from src.vista.vista_ejercicio5_d import mostrar_ejercicio_5d
 from src.vista.vista_ejercicio6 import mostrar_ejercicio_6
 from src.vista.vista_ejercicio8 import mostrar_ejercicio_8
+from src.vista.vista_ejercicio9 import mostrar_ejercicio_9
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
@@ -97,8 +99,11 @@ def ControladorPrincipal():
         resultados_8 = ejercicio8(spark_session)
         mostrar_ejercicio_8(resultados_8)
 
+        # Ejercicio 9
+        resultados_9 = ejercicio9(spark_session)
+        mostrar_ejercicio_9(resultados_9)
 
-        
+
         print("FIN")
         
     finally:

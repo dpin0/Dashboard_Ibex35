@@ -1,3 +1,5 @@
+#vista ejercicio 6
+
 def mostrar_ejercicio_6(r):
     print("Ej6")
     print(f"Restaurado a la versión: {r['version']}")

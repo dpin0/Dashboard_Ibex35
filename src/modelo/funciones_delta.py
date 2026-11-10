@@ -61,12 +61,6 @@ def version_actual(spark, ruta):
     """Numero entero de la version actual de la tabla Delta."""
     return (DeltaTable.forPath(spark, ruta).history(1).select("version").collect()[0][0])
 
-def version_antes(spark, ruta):
-    return DeltaTable.forPath(spark, ruta).history(1).select("version").collect()[0][0]
-
-def version_despues(spark, ruta):
-    return DeltaTable.forPath(spark, ruta).history(1).select("version").collect()[0][0]
-
 # silver: sentimiento
 def leer_csv_sentimiento(spark, ruta=RUTA_CSV_SENTIMIENTO):
     # Prueba ";", tabulador y ","; se queda con el primero que separe columnas.

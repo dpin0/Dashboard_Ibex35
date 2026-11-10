@@ -3,7 +3,7 @@ from pyspark.sql.functions import col
 from pyspark.errors import AnalysisException
 
 from src.modelo.funciones_delta import (
-    RUTA_BRONZE_IBEX, version_antes, version_despues)
+    RUTA_BRONZE_IBEX, version_actual)
 
 
 
@@ -25,8 +25,8 @@ def ejercicio5a(spark, ruta=RUTA_BRONZE_IBEX):
     filas_despues = spark.read.format("delta").load(ruta).count()
 
     return {
-        "version_antes": version_antes,
-        "version_despues": version_despues,
+        "version_antes": version_actual,
+        "version_despues": version_actual,
         "filas_antes": filas_antes,
         "filas_despues": filas_despues,
         "rechazado": rechazado,

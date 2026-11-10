@@ -1,3 +1,4 @@
+#vista ejercicio 5b
 
 def mostrar_ejercicio_5b(r):
     print("Ej5-b")

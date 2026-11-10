@@ -14,18 +14,17 @@ TICKERS = [
     "ROVI.MC", "SAB.MC", "SAN.MC", "SCYR.MC", "SLR.MC", "TEF.MC", "UNI.MC",
 ]
 
-def historico_ibex(spark):
-
+def descargar_ibex(spark, inicio, fin):
     df_unidos = None
-
-    for i in TICKERS:
-        df = descargar_historico(spark, i, "2024-10-01", "2026-10-02")
+    for t in TICKERS:
+        df = descargar_historico(spark, t, inicio, fin)
         if df is None:
             continue
-        if df_unidos is None:
-            df_unidos = df
-        else:
-            df_unidos = df_unidos.union(df)
-        
-    df_unidos.write.mode("overwrite").parquet("data/lake/bronze/ibex")
+        df_unidos = df if df_unidos is None else df_unidos.union(df)
     return df_unidos
+
+
+def historico_ibex(spark):
+    df = descargar_ibex(spark, "2024-10-01", "2026-10-02").coalesce(4)
+    df.write.mode("overwrite").parquet("data/lake/bronze/ibex")
+    return df

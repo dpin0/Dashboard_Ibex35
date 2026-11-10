@@ -38,5 +38,5 @@ def ejercicio4(spark, nuevos, ruta=RUTA_BRONZE_IBEX):
         "filas_inicial": filas_inicial,
         "filas_tras_1": filas_tras_1,
         "filas_tras_2": filas_tras_2,
-        "historial": historial,
+        "historial": historial(spark, ruta),
     }

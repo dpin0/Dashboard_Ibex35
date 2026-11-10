@@ -1,6 +1,7 @@
-def mostrar_ejercicio_2b(n_filas, ruta):
+#vista ejercicio 2b
 
+def mostrar_ejercicio_2b(n_filas, ruta):
     print("Ej2-b")
-    
+
     print(f"Sentimiento guardado en {ruta}")
     print(f"Filas escritas: {n_filas}")

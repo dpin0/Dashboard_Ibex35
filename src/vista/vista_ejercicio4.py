@@ -1,3 +1,5 @@
+#vista ejercicio 4
+
 def mostrar_ejercicio_4(r):
     print("Ej4")
     print(f"Versión actual antes de cargar: {r['version_actual']}")

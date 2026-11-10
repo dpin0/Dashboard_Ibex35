@@ -1,3 +1,5 @@
+#vista ejercicio 5d
+
 def mostrar_ejercicio_5d(r):
     print("Ej5-d")
     r["historial"].select("version", "timestamp", "operation",

@@ -1,3 +1,5 @@
+#vista ejercicio 5a
+
 def mostrar_ejercicio_5a(r):
     print("Ej5-a")
     print(f"¿Delta lo ha rechazado? {r['rechazado']}")

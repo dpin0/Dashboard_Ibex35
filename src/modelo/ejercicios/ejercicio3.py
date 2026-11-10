@@ -9,8 +9,6 @@ def ejercicio3(spark, rutas=None):
             "ibex": RUTA_BRONZE_IBEX,
             "sentimiento": RUTA_BRONZE_SENTIMIENTO,
         }
-    for c in df.columns:
-        df = df.withColumnRenamed(c, c.replace(" ", "_"))
 
     resultados = {}
     for nombre, ruta in rutas.items():
@@ -18,6 +16,6 @@ def ejercicio3(spark, rutas=None):
 
         contenido_log = sorted(os.listdir(os.path.join(ruta, "_delta_log")))
 
-        resultados[nombre] = (historial, contenido_log)
+        resultados[nombre] = (historial(spark,ruta), contenido_log)
 
     return resultados

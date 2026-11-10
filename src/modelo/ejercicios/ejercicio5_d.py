@@ -12,7 +12,7 @@ def ejercicio5d(spark, version_antes_5a, ruta=RUTA_BRONZE_IBEX):
 
     return {
         "version_antes_5a": version_antes_5a,
-        "historial": historial,
+        "historial": historial(spark,ruta),
         "columnas_antigua": df_antigua.columns,
         "columnas_actual": df_actual.columns,
         "filas_antigua": df_antigua.count(),

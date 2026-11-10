@@ -1,3 +1,5 @@
+#vista ejercicio 5c
+
 def mostrar_ejercicio_5c(r):
     print("Ej5-c")
     print(f"Filas BBVA antes: {r['filas_bbva_antes']}")

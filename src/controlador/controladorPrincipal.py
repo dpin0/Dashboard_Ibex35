@@ -1,7 +1,7 @@
 from src.modelo.SparkSession import create_spark_session
 
 from src.modelo.ejercicios.ejercicio1_a import descargar_historico
-from src.modelo.ejercicios.ejercicio1_b import historico_ibex
+from src.modelo.ejercicios.ejercicio1_b import historico_ibex, descargar_ibex
 from src.vista.vista_ejercicio1_a import admite_nulos_1a
 from src.vista.vista_ejercicio1_b import mostrar_inicio_1b, mostrar_omitidos,mostrar_resultado_1b
 from src.modelo.ejercicios.ejercicio1_c import leer_1c
@@ -64,10 +64,10 @@ def ControladorPrincipal():
         mostrar_ejercicio_3(resultados_3)
 
         # Ejercicio 4
-        nuevos = historico_ibex(spark_session)  
+        nuevos = descargar_ibex(spark_session, "2026-10-02", "2026-11-11")
         resultados_4 = ejercicio4(spark_session, nuevos)
         mostrar_ejercicio_4(resultados_4)
-
+        
         # Ejercicio 5a
         resultados_5a = ejercicio5a(spark_session)
         mostrar_ejercicio_5a(resultados_5a)

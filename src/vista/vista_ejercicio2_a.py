@@ -1,3 +1,5 @@
+#vista ejercicio 2a
+
 def mostrar_ejercicio_2a(df):
     print("Ej2-a")
     print("Esquema del CSV de sentimiento:")

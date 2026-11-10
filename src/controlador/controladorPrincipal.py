@@ -23,7 +23,7 @@ from src.modelo.ejercicios.ejercicio9 import ejercicio9
 from src.modelo.ejercicios.ejercicio10 import ejercicio10
 from src.modelo.ejercicios.ejercicio11 import ejercicio11
 from src.modelo.ejercicios.ejercicio12 import ejercicio12
-#from src.modelo.ejercicios.ejercicio13 import ejercicio13
+from src.modelo.ejercicios.ejercicio13 import ejercicio13
 
 
 from src.vista.vista_ejercicio2_a import mostrar_ejercicio_2a
@@ -41,19 +41,16 @@ from src.vista.vista_ejercicio9 import mostrar_ejercicio_9
 from src.vista.vista_ejercicio10 import mostrar_ejercicio_10
 from src.vista.vista_ejercicio11 import mostrar_ejercicio_11
 from src.vista.vista_ejercicio12 import mostrar_ejercicio_12
-#from src.vista.vista_ejercicio13 import mostrar_ejercicio_13
+from src.vista.vista_ejercicio13 import mostrar_ejercicio_13
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
     #path = r".\lib\mssql-jdbc-13.4.0.jre11.jar"
     spark_session = create_spark_session()
     try:
-        '''
+
         # Ejercicios 1a y 1b
-        
-        # Descomentar para ejecutar de nuevo ->
         historico_ibex(spark_session)
-        
         
         # Ejercicio 1c
         df_completo, df_det = leer_1c(spark_session)
@@ -109,11 +106,11 @@ def ControladorPrincipal():
         # Ejercicio 9
         resultados_9 = ejercicio9(spark_session)
         mostrar_ejercicio_9(resultados_9)
-
+        
         # Ejercicio 10
         resultados_10 = ejercicio10(spark_session)
         mostrar_ejercicio_10(resultados_10)
-        '''
+        
         # Ejercicio 11 -> justificación en el pdf
         resultados_11 = ejercicio11(spark_session)
         mostrar_ejercicio_11(resultados_11)
@@ -121,7 +118,10 @@ def ControladorPrincipal():
         # Ejercicio 12 -> justificación en el pdf
         resultados_12 = ejercicio12(spark_session)
         mostrar_ejercicio_12(resultados_12)
-
+        
+        # Ejercicio 13
+        resultados_13 = ejercicio13(spark_session)
+        mostrar_ejercicio_13(resultados_13)
 
 
         print("FIN")

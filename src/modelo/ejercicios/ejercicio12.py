@@ -10,18 +10,13 @@ def ejercicio12(spark):
     h = h.withColumn("Sentimiento_imputado", F.col("Sentimiento").isNull())
     h = rellenar_sentimiento(h)
 
-    h = (h
-         # Amplitud del día en %: mide la volatilidad intradía
-         .withColumn("Rango_pct",
-                     F.round(F.try_divide(F.col("High") - F.col("Low"),
-                                          F.col("Low")) * 100, 2))
-         # Close sobre su media de 7 sesiones: señal simple para colorear
-         .withColumn("Tendencia",
-                     F.when(F.col("Close") > F.col("Media_movil_7"), "Alcista")
-                      .otherwise("Bajista")))
+    h = (h.withColumn("Rango_pct",
+                      F.round(F.try_divide(F.col("High") - F.col("Low"), F.col("Low")) * 100, 2))
+         .withColumn("Tendencia", 
+                     F.when(F.col("Var_diaria").isNull(), F.lit(None).cast("string"))
+                      .when(F.col("Close") > F.col("Media_movil_7"), "Alcista").otherwise("Bajista")))
 
     escribir_delta(h, RUTA_GOLD_HECHO)
-
     leido = leer_delta(spark, RUTA_GOLD_HECHO)
     return {
         "columnas": leido.columns,

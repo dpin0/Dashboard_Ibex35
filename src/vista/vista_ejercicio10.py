@@ -9,6 +9,6 @@ def mostrar_ejercicio_10(r):
     print(f"Claves duplicadas : {r['claves_duplicadas']}")
     print(f"Huérfanos empresa : {r['huerfanos_empresa']}")
     print(f"Huérfanos fecha : {r['huerfanos_fecha']}")
-    print(f"Filas sin sentimiento  : {r['sin_sentimiento']}")
+    print(f"Filas sin sentimiento : {r['sin_sentimiento']}")
     print(f"Guardado en : {r['ruta']}")
     r["muestra"].show(5, truncate=False)

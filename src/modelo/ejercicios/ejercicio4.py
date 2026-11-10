@@ -1,6 +1,6 @@
 from delta.tables import DeltaTable
 from src.modelo.funciones_delta import (
-    RUTA_BRONZE_IBEX, contar_filas, version_actual)
+    RUTA_BRONZE_IBEX, contar_filas, version_actual, historial)
 
 
 def _merge_nuevos(spark, nuevos, ruta):
@@ -38,5 +38,5 @@ def ejercicio4(spark, nuevos, ruta=RUTA_BRONZE_IBEX):
         "filas_inicial": filas_inicial,
         "filas_tras_1": filas_tras_1,
         "filas_tras_2": filas_tras_2,
-        "historial": DeltaTable.forPath(spark, ruta).history(),
+        "historial": historial,
     }

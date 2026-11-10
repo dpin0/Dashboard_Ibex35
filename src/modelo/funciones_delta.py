@@ -59,9 +59,13 @@ def contar_filas(spark, ruta):
 
 def version_actual(spark, ruta):
     """Numero entero de la version actual de la tabla Delta."""
-    return (DeltaTable.forPath(spark, ruta)
-            .history(1).select("version").collect()[0][0])
+    return (DeltaTable.forPath(spark, ruta).history(1).select("version").collect()[0][0])
 
+def version_antes(spark, ruta):
+    return DeltaTable.forPath(spark, ruta).history(1).select("version").collect()[0][0]
+
+def version_despues(spark, ruta):
+    return DeltaTable.forPath(spark, ruta).history(1).select("version").collect()[0][0]
 
 # silver: sentimiento
 def leer_csv_sentimiento(spark, ruta=RUTA_CSV_SENTIMIENTO):
@@ -144,6 +148,10 @@ def empresas_silver(df_crudo):
             .dropDuplicates(["Ticker"]))
 
 
+def historial(spark, ruta):
+    return DeltaTable.forPath(spark, ruta).history()
+
+    
 # ------------------------------------------------------------------- gold
 def precios_con_sector(precios, empresas):
     return precios.join(empresas.select("Ticker", "Sector"), "Ticker", "left")

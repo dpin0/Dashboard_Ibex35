@@ -1,7 +1,8 @@
 from delta.tables import DeltaTable
 from pyspark.sql.functions import col
 
-RUTA_BRONZE_IBEX = "data/lake/bronze/ibex"
+from src.modelo.funciones_delta import (
+    RUTA_BRONZE_IBEX)
 
 
 def ejercicio5b(spark, ruta=RUTA_BRONZE_IBEX):

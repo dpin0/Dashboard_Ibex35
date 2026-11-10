@@ -1,10 +1,10 @@
 from delta.tables import DeltaTable
 
-RUTA_BRONZE_IBEX = "data/lake/bronze/ibex"
+from src.modelo.funciones_delta import (
+    RUTA_BRONZE_IBEX, historial)
 
 
 def ejercicio5d(spark, version_antes_5a, ruta=RUTA_BRONZE_IBEX):
-    historial = DeltaTable.forPath(spark, ruta).history()
 
     df_antigua = spark.read.format("delta") \
         .option("versionAsOf", version_antes_5a).load(ruta)

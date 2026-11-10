@@ -1,6 +1,7 @@
 from delta.tables import DeltaTable
 
-RUTA_BRONZE_IBEX = "data/lake/bronze/ibex"
+from src.modelo.funciones_delta import( 
+    RUTA_BRONZE_IBEX)
 
 
 def ejercicio5c(spark, ruta=RUTA_BRONZE_IBEX):

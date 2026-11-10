@@ -42,7 +42,7 @@ MAPA_SECTORES = {
     "servicios públicos": "Utilities",
 }
 
-
+# Uso de IA: Claude Sonnet 5.5. Pedí ayuda para añadir limpiar_sentimiento, sentimiento_por_sector_dia y calendario_continuo, y para revisar el resto de funciones del módulo.
 
 def leer_delta(spark, ruta):
     return spark.read.format("delta").load(ruta)

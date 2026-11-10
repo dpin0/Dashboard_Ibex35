@@ -14,13 +14,3 @@ def create_spark_session():
             )
     )
     return configure_spark_with_delta_pip(builder).getOrCreate()
-
-    '''
-    spark_session = (
-            SparkSession.builder
-            .appName("IBEX35")
-            .config('spark.driver.extraClassPath', path)
-            .getOrCreate()
-        )
-    return spark_session
-    '''

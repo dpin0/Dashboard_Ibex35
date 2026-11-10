@@ -45,13 +45,11 @@ from src.vista.vista_ejercicio13 import mostrar_ejercicio_13
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
-    #path = r".\lib\mssql-jdbc-13.4.0.jre11.jar"
     spark_session = create_spark_session()
     try:
-
+        '''
         # Ejercicio 1a 
-        df_1a = descargar_historico(spark_session, "BBVA.MC", "2026-09-01", "2026-10-02")
-        admite_nulos_1a(df_1a)
+        admite_nulos_1a()
 
         # Ejercicio 1b
         mostrar_inicio_1b()
@@ -112,7 +110,7 @@ def ControladorPrincipal():
         # Ejercicio 9
         resultados_9 = ejercicio9(spark_session)
         mostrar_ejercicio_9(resultados_9)
-        
+        '''
         # Ejercicio 10
         resultados_10 = ejercicio10(spark_session)
         mostrar_ejercicio_10(resultados_10)

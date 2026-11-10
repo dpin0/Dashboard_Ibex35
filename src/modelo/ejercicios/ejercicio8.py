@@ -3,6 +3,9 @@ from src.modelo.funciones_delta import (
     RUTA_BRONZE_IBEX, RUTA_BRONZE_SENTIMIENTO, RUTA_SILVER_SENTIMIENTO,
     limpiar_sentimiento, escribir_delta, leer_delta, contar_filas)
 
+# Uso de IA: Claude Sonnet 5.5. Pedí ayuda para refactorizar la limpieza del sentimiento en una función reutilizable (limpiar_sentimiento) 
+# que use las funciones del módulo y valide el rango 0-100.
+
 # Ej8
 def ejercicio8(spark):
     bronze = leer_delta(spark, RUTA_BRONZE_SENTIMIENTO)

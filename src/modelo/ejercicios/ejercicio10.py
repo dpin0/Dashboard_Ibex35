@@ -1,3 +1,4 @@
+from pyspark.sql import functions as F
 from src.modelo.funciones_delta import (
     RUTA_SILVER_IBEX, RUTA_SILVER_EMPRESAS, RUTA_SILVER_SENTIMIENTO,
     RUTA_GOLD_HECHO, RUTA_GOLD_DIM_EMPRESA, RUTA_GOLD_DIM_FECHA, RUTA_GOLD,

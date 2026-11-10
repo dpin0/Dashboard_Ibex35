@@ -13,4 +13,4 @@ def descargar_historico(spark, ticker, fecha_ini, fecha_fin):
 
     pdf["Ticker"] = ticker
 
-    return spark.createDataFrame(pdf)
+    return spark.createDataFrame(pdf).coalesce(1)

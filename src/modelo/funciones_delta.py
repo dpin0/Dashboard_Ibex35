@@ -61,6 +61,17 @@ def version_actual(spark, ruta):
     """Numero entero de la version actual de la tabla Delta."""
     return (DeltaTable.forPath(spark, ruta).history(1).select("version").collect()[0][0])
 
+
+def merge_nuevos(spark, nuevos, ruta):
+    """Inserta solo las filas cuya clave (Ticker, Date) no existe aun."""
+    destino = DeltaTable.forPath(spark, ruta)
+    (destino.alias("d")
+        .merge(nuevos.alias("n"),
+               "d.Ticker = n.Ticker AND d.Date = n.Date")
+        .whenNotMatchedInsertAll()
+        .execute())
+    return contar_filas(spark, ruta)
+    
 # silver: sentimiento
 def leer_csv_sentimiento(spark, ruta=RUTA_CSV_SENTIMIENTO):
     # Prueba ";", tabulador y ","; se queda con el primero que separe columnas.

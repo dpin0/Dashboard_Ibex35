@@ -25,6 +25,6 @@ def descargar_ibex(spark, inicio, fin):
 
 
 def historico_ibex(spark):
-    df = descargar_ibex(spark, "2024-10-01", "2026-10-02").coalesce(4)
+    df = descargar_ibex(spark, "2024-10-01", "2026-10-02").repartition(4)
     df.write.mode("overwrite").parquet("data/lake/bronze/ibex")
     return df

@@ -25,18 +25,21 @@ from src.modelo.ejercicios.ejercicio5_b import ejercicio5b
 from src.modelo.ejercicios.ejercicio5_c import ejercicio5c
 from src.modelo.ejercicios.ejercicio5_d import ejercicio5d
 from src.modelo.ejercicios.ejercicio6 import ejercicio6
+from src.modelo.ejercicios.ejercicio8 import ejercicio8
 
 from src.vista.vista_ejercicio5_a import mostrar_ejercicio_5a
 from src.vista.vista_ejercicio5_b import mostrar_ejercicio_5b
 from src.vista.vista_ejercicio5_c import mostrar_ejercicio_5c
 from src.vista.vista_ejercicio5_d import mostrar_ejercicio_5d
 from src.vista.vista_ejercicio6 import mostrar_ejercicio_6
+from src.vista.vista_ejercicio8 import mostrar_ejercicio_8
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
     #path = r".\lib\mssql-jdbc-13.4.0.jre11.jar"
     spark_session = create_spark_session()
     try:
+        '''
         # Ejercicios 1a y 1b
         
         # Descomentar para ejecutar de nuevo ->
@@ -71,11 +74,11 @@ def ControladorPrincipal():
         # Ejercicio 5a
         resultados_5a = ejercicio5a(spark_session)
         mostrar_ejercicio_5a(resultados_5a)
-
+        
         # Ejercicio 5b
         resultados_5b = ejercicio5b(spark_session)
         mostrar_ejercicio_5b(resultados_5b)
-
+        
         # Ejercicio 5c
         resultados_5c = ejercicio5c(spark_session)
         mostrar_ejercicio_5c(resultados_5c)
@@ -87,7 +90,15 @@ def ControladorPrincipal():
         # Ejercicio 6
         resultados_6  = ejercicio6(spark_session, resultados_4["version_tras_1"], resultados_4["filas_tras_1"])
         mostrar_ejercicio_6(resultados_6)
+        '''
 
+
+        # Ejercicio 8 
+        resultados_8 = ejercicio8(spark_session)
+        mostrar_ejercicio_8(resultados_8)
+
+
+        
         print("FIN")
         
     finally:

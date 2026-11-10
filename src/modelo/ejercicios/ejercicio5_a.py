@@ -8,6 +8,7 @@ from src.modelo.funciones_delta import (
 
 
 def ejercicio5a(spark, ruta=RUTA_BRONZE_IBEX):
+    version_antes = version_actual(spark, ruta)
     filas_antes = spark.read.format("delta").load(ruta).count()
 
     # Columna nueva: Close + 5
@@ -22,11 +23,12 @@ def ejercicio5a(spark, ruta=RUTA_BRONZE_IBEX):
         rechazado = True
         mensaje = str(e).split("\n")[0]
 
+    version_despues = version_actual(spark, ruta)
     filas_despues = spark.read.format("delta").load(ruta).count()
 
     return {
-        "version_antes": version_actual,
-        "version_despues": version_actual,
+        "version_antes": version_antes,
+        "version_despues": version_despues,
         "filas_antes": filas_antes,
         "filas_despues": filas_despues,
         "rechazado": rechazado,

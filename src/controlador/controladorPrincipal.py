@@ -47,7 +47,7 @@ def ControladorPrincipal():
     print(">>> Controlador iniciado")
     spark_session = create_spark_session()
     try:
-        '''
+        
         # Ejercicio 1a 
         admite_nulos_1a()
 
@@ -110,7 +110,7 @@ def ControladorPrincipal():
         # Ejercicio 9
         resultados_9 = ejercicio9(spark_session)
         mostrar_ejercicio_9(resultados_9)
-        '''
+        
         # Ejercicio 10
         resultados_10 = ejercicio10(spark_session)
         mostrar_ejercicio_10(resultados_10)

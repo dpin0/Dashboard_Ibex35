@@ -1,53 +1,55 @@
 from src.modelo.SparkSession import create_spark_session
 
-from src.modelo.ejercicios.ejercicio1_a import descargar_historico
-from src.modelo.ejercicios.ejercicio1_b import historico_ibex, descargar_ibex
-from src.vista.vista_ejercicio1_a import admite_nulos_1a
-from src.vista.vista_ejercicio1_b import mostrar_inicio_1b, mostrar_omitidos,mostrar_resultado_1b
-from src.modelo.ejercicios.ejercicio1_c import leer_1c
-from src.vista.vista_ejercicio1_c import mostrar_ejercicio_1c
+from src.modelo.ejercicios_pract1.ejercicio1_a import descargar_historico
+from src.modelo.ejercicios_pract1.ejercicio1_b import historico_ibex, descargar_ibex
+from src.vista.vistas_pract1.vista_ejercicio1_a import admite_nulos_1a
+from src.vista.vistas_pract1.vista_ejercicio1_b import mostrar_inicio_1b, mostrar_omitidos,mostrar_resultado_1b
+from src.modelo.ejercicios_pract1.ejercicio1_c import leer_1c
+from src.vista.vistas_pract1.vista_ejercicio1_c import mostrar_ejercicio_1c
 
 
-from src.modelo.ejercicios.ejercicio2_a import ejercicio2a
-from src.modelo.ejercicios.ejercicio2_b import ejercicio2b, RUTA_BRONZE_SENTIMIENTO
-from src.modelo.ejercicios.ejercicio2_c import ejercicio2c
-from src.modelo.ejercicios.ejercicio3 import ejercicio3
-from src.modelo.ejercicios.ejercicio4 import ejercicio4
-from src.modelo.ejercicios.ejercicio5_a import ejercicio5a
-from src.modelo.ejercicios.ejercicio5_b import ejercicio5b
-from src.modelo.ejercicios.ejercicio5_c import ejercicio5c
-from src.modelo.ejercicios.ejercicio5_d import ejercicio5d
-from src.modelo.ejercicios.ejercicio6 import ejercicio6
-from src.modelo.ejercicios.ejercicio8 import ejercicio8
-from src.modelo.ejercicios.ejercicio9 import ejercicio9
-from src.modelo.ejercicios.ejercicio10 import ejercicio10
-from src.modelo.ejercicios.ejercicio11 import ejercicio11
-from src.modelo.ejercicios.ejercicio12 import ejercicio12
-from src.modelo.ejercicios.ejercicio13 import ejercicio13
+from src.modelo.ejercicios_pract1.ejercicio2_a import ejercicio2a
+from src.modelo.ejercicios_pract1.ejercicio2_b import ejercicio2b, RUTA_BRONZE_SENTIMIENTO
+from src.modelo.ejercicios_pract1.ejercicio2_c import ejercicio2c
+from src.modelo.ejercicios_pract1.ejercicio3 import ejercicio3
+from src.modelo.ejercicios_pract1.ejercicio4 import ejercicio4
+from src.modelo.ejercicios_pract1.ejercicio5_a import ejercicio5a
+from src.modelo.ejercicios_pract1.ejercicio5_b import ejercicio5b
+from src.modelo.ejercicios_pract1.ejercicio5_c import ejercicio5c
+from src.modelo.ejercicios_pract1.ejercicio5_d import ejercicio5d
+from src.modelo.ejercicios_pract1.ejercicio6 import ejercicio6
+from src.modelo.ejercicios_pract1.ejercicio8 import ejercicio8
+from src.modelo.ejercicios_pract1.ejercicio9 import ejercicio9
+from src.modelo.ejercicios_pract1.ejercicio10 import ejercicio10
+from src.modelo.ejercicios_pract1.ejercicio11 import ejercicio11
+from src.modelo.ejercicios_pract1.ejercicio12 import ejercicio12
+from src.modelo.ejercicios_pract1.ejercicio13 import ejercicio13
 
 
-from src.vista.vista_ejercicio2_a import mostrar_ejercicio_2a
-from src.vista.vista_ejercicio2_b import mostrar_ejercicio_2b
-from src.vista.vista_ejercicio2_c import mostrar_ejercicio_2c
-from src.vista.vista_ejercicio3 import mostrar_ejercicio_3
-from src.vista.vista_ejercicio4 import mostrar_ejercicio_4
-from src.vista.vista_ejercicio5_a import mostrar_ejercicio_5a
-from src.vista.vista_ejercicio5_b import mostrar_ejercicio_5b
-from src.vista.vista_ejercicio5_c import mostrar_ejercicio_5c
-from src.vista.vista_ejercicio5_d import mostrar_ejercicio_5d
-from src.vista.vista_ejercicio6 import mostrar_ejercicio_6
-from src.vista.vista_ejercicio8 import mostrar_ejercicio_8
-from src.vista.vista_ejercicio9 import mostrar_ejercicio_9
-from src.vista.vista_ejercicio10 import mostrar_ejercicio_10
-from src.vista.vista_ejercicio11 import mostrar_ejercicio_11
-from src.vista.vista_ejercicio12 import mostrar_ejercicio_12
-from src.vista.vista_ejercicio13 import mostrar_ejercicio_13
+from src.vista.vistas_pract1.vista_ejercicio2_a import mostrar_ejercicio_2a
+from src.vista.vistas_pract1.vista_ejercicio2_b import mostrar_ejercicio_2b
+from src.vista.vistas_pract1.vista_ejercicio2_c import mostrar_ejercicio_2c
+from src.vista.vistas_pract1.vista_ejercicio3 import mostrar_ejercicio_3
+from src.vista.vistas_pract1.vista_ejercicio4 import mostrar_ejercicio_4
+from src.vista.vistas_pract1.vista_ejercicio5_a import mostrar_ejercicio_5a
+from src.vista.vistas_pract1.vista_ejercicio5_b import mostrar_ejercicio_5b
+from src.vista.vistas_pract1.vista_ejercicio5_c import mostrar_ejercicio_5c
+from src.vista.vistas_pract1.vista_ejercicio5_d import mostrar_ejercicio_5d
+from src.vista.vistas_pract1.vista_ejercicio6 import mostrar_ejercicio_6
+from src.vista.vistas_pract1.vista_ejercicio8 import mostrar_ejercicio_8
+from src.vista.vistas_pract1.vista_ejercicio9 import mostrar_ejercicio_9
+from src.vista.vistas_pract1.vista_ejercicio10 import mostrar_ejercicio_10
+from src.vista.vistas_pract1.vista_ejercicio11 import mostrar_ejercicio_11
+from src.vista.vistas_pract1.vista_ejercicio12 import mostrar_ejercicio_12
+from src.vista.vistas_pract1.vista_ejercicio13 import mostrar_ejercicio_13
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
     spark_session = create_spark_session()
     try:
-        
+
+    #PRÁCTICA 1    
+        '''
         # Ejercicio 1a 
         admite_nulos_1a()
 
@@ -126,7 +128,20 @@ def ControladorPrincipal():
         # Ejercicio 13
         resultados_13 = ejercicio13(spark_session)
         mostrar_ejercicio_13(resultados_13)
+        '''
+    #PRÁCTICA 4
 
+        # Ejercicio 1
+
+        # Ejercicio 2
+
+        # Ejercicio 3
+
+        # Ejercicio 4
+
+        # Ejercicio 5
+
+        
 
         print("FIN")
         

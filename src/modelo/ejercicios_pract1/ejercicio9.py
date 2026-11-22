@@ -1,4 +1,4 @@
-from src.modelo.ejercicios.ejercicio1_b import TICKERS
+from src.modelo.ejercicios_pract1.ejercicio1_b import TICKERS
 from src.modelo.funciones_delta import (
     RUTA_BRONZE_IBEX, RUTA_BRONZE_EMPRESAS, RUTA_SILVER_IBEX,
     RUTA_SILVER_EMPRESAS, leer_delta, escribir_delta, contar_filas, limpiar_precios, descargar_info_empresas, empresas_silver)

@@ -46,19 +46,23 @@ from src.vista.vistas_pract1.vista_ejercicio13 import mostrar_ejercicio_13
 
 
 # Práctica 4
-from src.modelo.cargar_capa_gold import cargar_apertura_cierre
+from src.modelo.leer_gold import cargar_apertura_cierre
 
 from src.modelo.ejercicios_pract4.ejercicio1_4 import ejercicio1_4
 from src.modelo.ejercicios_pract4.ejercicio2_4 import ejercicio2_4
-from src.vista.vistas_pract4.vista_ejercicio1_4 import mostrar_ejercicio1
-from src.vista.vistas_pract4.vista_ejercicio2_4 import mostrar_ejercicio2
+from src.modelo.ejercicios_pract4.ejercicio3_4 import recuperar_runs_ordenadas
+
+from src.vista.vistas_pract4.vista_ejercicio1_4 import mostrar_ejercicio1_4
+from src.vista.vistas_pract4.vista_ejercicio2_4 import mostrar_ejercicio2_4
+from src.vista.vistas_pract4.vista_ejercicio3_4 import mostrar_ejercicio3_4
+
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
     spark_session = create_spark_session()
     try:
 
-    #PRÁCTICA 1    
+        #PRÁCTICA 1    
         '''
         # Ejercicio 1a 
         admite_nulos_1a()
@@ -141,33 +145,31 @@ def ControladorPrincipal():
         '''
     #PRÁCTICA 4
 
-from src.modelo.carga_gold import cargar_apertura_cierre
+        from src.modelo.leer_gold import cargar_apertura_cierre
 
+        df_4 = cargar_apertura_cierre(spark_session).cache()
 
-def ejecutar_practica4(spark):
-    df = cargar_apertura_cierre(spark).cache()
-
-    # --- Ej1 ---
-    vista.mostrar_cabecera(1, "Pipeline MLflow VectorAssembler + KMeans")
-    vista.mostrar_ejercicio1(ejecutar_ejercicio1(df, k=3))
-
-    # --- Ej2 ---
-    vista.mostrar_cabecera(2, "Hyperopt + MLflow: mejor k")
-    vista.mostrar_ejercicio2(ejecutar_ejercicio2(df))
         # Ejercicio 1
+        resultados1_4 = ejercicio1_4(df_4, k=3)
+        mostrar_ejercicio1_4(resultados1_4)
 
         # Ejercicio 2
+        resultados2_4 = ejercicio2_4(df_4)
+        mostrar_ejercicio2_4(resultados2_4)
 
         # Ejercicio 3
+        #mostrar_ejercicio3
+        resultados3_4 = recuperar_runs_ordenadas()
+        mostrar_ejercicio3_4(resultados3_4)
 
         # Ejercicio 4
 
         # Ejercicio 5
 
-        
+            
 
         print("FIN")
-        
+            
     finally:
         spark_session.stop()
 

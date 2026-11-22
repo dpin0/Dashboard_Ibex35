@@ -1,7 +1,7 @@
 import mlflow
 import numpy as np
 from hyperopt import fmin, tpe, hp, Trials, STATUS_OK
-from src.modelo import kmeans_modelo
+from src.modelo import kmeans
 from src.modelo.ejercicios_pract4 import config_pract4 as cfg
 
 
@@ -16,8 +16,8 @@ def ejercicio2_4(df, k_min: int = 2, k_max: int = 8, max_evals: int = 7) -> dict
         with mlflow.start_run(run_name=f"kmeans_k{k}"):
             # SEED 1 (modelo): fija la inicialización de los centroides de KMeans en Spark;
             # mismo k + mismas features => siempre el mismo clustering.
-            modelo = kmeans_modelo.entrenar(df, k, seed=cfg.SEED_MODELO)
-            db = kmeans_modelo.davies_bouldin(modelo.transform(df))
+            modelo = kmeans.entrenar(df, k, seed=cfg.SEED_MODELO)
+            db = kmeans.davies_bouldin(modelo.transform(df))
             mlflow.log_param("k", k)
             mlflow.log_param("seed_modelo", cfg.SEED_MODELO)
             mlflow.log_param("seed_hyperopt", cfg.SEED_HYPEROPT)

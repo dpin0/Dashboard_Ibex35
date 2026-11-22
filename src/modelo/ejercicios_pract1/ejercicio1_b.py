@@ -1,6 +1,6 @@
 import yfinance as yf
 from pyspark.sql.functions import *
-from src.modelo.ejercicios.ejercicio1_a import descargar_historico
+from src.modelo.ejercicios_pract1.ejercicio1_a import descargar_historico
 
 
 #Ej1-b

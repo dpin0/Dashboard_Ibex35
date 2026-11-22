@@ -1,3 +1,4 @@
+# Práctica 1
 from src.modelo.SparkSession import create_spark_session
 
 from src.modelo.ejercicios_pract1.ejercicio1_a import descargar_historico
@@ -42,6 +43,15 @@ from src.vista.vistas_pract1.vista_ejercicio10 import mostrar_ejercicio_10
 from src.vista.vistas_pract1.vista_ejercicio11 import mostrar_ejercicio_11
 from src.vista.vistas_pract1.vista_ejercicio12 import mostrar_ejercicio_12
 from src.vista.vistas_pract1.vista_ejercicio13 import mostrar_ejercicio_13
+
+
+# Práctica 4
+from src.modelo.cargar_capa_gold import cargar_apertura_cierre
+
+from src.modelo.ejercicios_pract4.ejercicio1_4 import ejercicio1_4
+from src.modelo.ejercicios_pract4.ejercicio2_4 import ejercicio2_4
+from src.vista.vistas_pract4.vista_ejercicio1_4 import mostrar_ejercicio1
+from src.vista.vistas_pract4.vista_ejercicio2_4 import mostrar_ejercicio2
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
@@ -131,6 +141,19 @@ def ControladorPrincipal():
         '''
     #PRÁCTICA 4
 
+from src.modelo.carga_gold import cargar_apertura_cierre
+
+
+def ejecutar_practica4(spark):
+    df = cargar_apertura_cierre(spark).cache()
+
+    # --- Ej1 ---
+    vista.mostrar_cabecera(1, "Pipeline MLflow VectorAssembler + KMeans")
+    vista.mostrar_ejercicio1(ejecutar_ejercicio1(df, k=3))
+
+    # --- Ej2 ---
+    vista.mostrar_cabecera(2, "Hyperopt + MLflow: mejor k")
+    vista.mostrar_ejercicio2(ejecutar_ejercicio2(df))
         # Ejercicio 1
 
         # Ejercicio 2

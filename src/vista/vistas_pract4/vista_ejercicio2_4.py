@@ -1,6 +1,6 @@
 #vista ejercicio 2 - práctica 4
 
-def mostrar_ejercicio2(r: dict) -> None:
+def mostrar_ejercicio2_4(r: dict) -> None:
     print("Ej2")
 
     print("Intentos (k, davies_bouldin):")

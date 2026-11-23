@@ -8,8 +8,7 @@ from src.modelo.ejercicios_pract4 import config_pract4 as cfg
 
 def construir_pipeline(k: int, seed: int = cfg.SEED_MODELO) -> Pipeline:
     ensamblador = VectorAssembler(inputCols=cfg.FEATURES, outputCol="features")
-    escalador = StandardScaler(inputCol="features", outputCol="scaled_features",
-                               withMean=True, withStd=True)
+    escalador = StandardScaler(inputCol="features", outputCol="scaled_features", withMean=True, withStd=True)
     kmeans = KMeans(featuresCol="scaled_features", predictionCol="prediction", k=k, seed=seed)
     return Pipeline(stages=[ensamblador, escalador, kmeans])
 

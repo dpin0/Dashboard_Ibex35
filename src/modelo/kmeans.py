@@ -19,8 +19,7 @@ def entrenar(df, k: int, seed: int = cfg.SEED_MODELO) -> PipelineModel:
 
 def silhouette(predicciones) -> float:
     """Métrica Ej1: mayor es mejor."""
-    return ClusteringEvaluator(featuresCol="scaled_features", predictionCol="prediction",
-                               metricName="silhouette").evaluate(predicciones)
+    return ClusteringEvaluator(featuresCol="scaled_features", predictionCol="prediction", metricName="silhouette").evaluate(predicciones)
 
 
 def davies_bouldin(predicciones) -> float:

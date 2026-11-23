@@ -1,5 +1,3 @@
-"""Ej4: guardar versión 1 de las features, recuperarla, reentrenar y comprobar que el
-resultado es idéntico gracias a la seed fija."""
 import numpy as np
 from pyspark.sql import functions as F
 from src.modelo import kmeans
@@ -8,7 +6,6 @@ from src.modelo.features_logica import guardar_features, recuperar_features
 from src.modelo.ejercicios_pract4 import config_pract4 as cfg
 
 COL_CLAVE = "FechaKey"
-
 
 def _features_con_clave(spark):
     """Features usadas en Ej1/Ej2 (Open, Close de BBVA) más la clave (Ticker, FechaKey)."""
@@ -63,3 +60,5 @@ def ejercicio4_4(spark, k: int = 3, version: int = 1) -> dict:
             "filas_con_cluster_distinto": diferentes,
             "reproducible": iguales_centros and diferentes == 0
                             and abs(sil_a - sil_b) < 1e-9}
+
+# Guardar versión 1 de las features, recuperarla, reentrenar y comprobar que el resultado es idéntico gracias a la seed fija.

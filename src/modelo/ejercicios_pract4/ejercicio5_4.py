@@ -2,12 +2,8 @@ from src.modelo.hyperopt import buscar_mejor_k
 from src.modelo.leer_gold import cargar_apertura_cierre
 from src.modelo.ejercicios_pract4.ejercicio3_4 import recuperar_runs_ordenadas
 
-EMPRESA_EJ5 = "IBE.MC"            # Iberdrola (otra empresa de la gold)
-EXPERIMENTO_EJ5 = "kmeans_IBE"    # experimento distinto al de BBVA (kmeans_BBVA)
-
-
 def mejores_runs_por_experimento() -> list:
-    """Lista de experimentos disponibles con su mejor run (reutiliza el orden del Ej3)."""
+    """Lista de experimentos disponibles con su mejor run"""
     mejores = []
     for g in recuperar_runs_ordenadas():
         mejor = g["runs"].iloc[0]       # primera fila = mejor según el sentido de la métrica
@@ -20,8 +16,8 @@ def mejores_runs_por_experimento() -> list:
 
 
 def ejercicio5_4(spark) -> dict:
-    df = cargar_apertura_cierre(spark, EMPRESA_EJ5).cache()
-    resultado = buscar_mejor_k(df, EXPERIMENTO_EJ5, EMPRESA_EJ5)
+    df = cargar_apertura_cierre(spark, "IBE.MC").cache()
+    resultado = buscar_mejor_k(df, "kmeans_IBE", "IBE.MC")
     resultado["experimentos"] = mejores_runs_por_experimento()
 
     # POR QUÉ SEPARAR EN EXPERIMENTOS:

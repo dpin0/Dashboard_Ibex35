@@ -1,0 +1,9 @@
+artifact_location: c:\Users\USUARIO\Desktop\MD\dpinoc00_practica4\mlruns/164656694462594495
+creation_time: 1795474452429
+effective_trace_archival_retention: null
+experiment_id: '164656694462594495'
+last_update_time: 1795474452429
+lifecycle_stage: active
+name: kmeans_IBE
+trace_location: null
+workspace: default

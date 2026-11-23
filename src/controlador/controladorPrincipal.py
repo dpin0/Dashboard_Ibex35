@@ -152,7 +152,7 @@ def ControladorPrincipal():
         df_4 = cargar_apertura_cierre(spark_session).cache()
 
         # Ejercicio 1
-        resultados1_4 = ejercicio1_4(df_4, ks=(2, 3, 4, 5, 6))
+        resultados1_4 = ejercicio1_4(df_4, ks=range(2, 9))
         mostrar_ejercicio1_4(resultados1_4)
 
         # Ejercicio 2

@@ -4,7 +4,7 @@ from src.modelo import kmeans
 from src.modelo.ejercicios_pract4.config_pract4 import MLFLOW_URI, SEED_MODELO, FEATURES
 
 
-def ejercicio1_4(df, ks=(2, 3, 4, 5, 6)) -> dict:
+def ejercicio1_4(df, ks=range(2, 9)) -> dict:
     mlflow.set_tracking_uri(MLFLOW_URI)
     mlflow.set_experiment("kmeans_BBVA_ej1")
 

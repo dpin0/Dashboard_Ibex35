@@ -1,7 +1,7 @@
 #vista ejercicio 3 - práctica 4
 
 def mostrar_ejercicio3_4(grupos: list) -> None:
-    print("Ej3")
+    print("Ej 3")
 
     if not grupos:
         print("No hay runs registradas todavía.")

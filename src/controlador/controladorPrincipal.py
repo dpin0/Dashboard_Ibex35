@@ -52,12 +52,16 @@ from src.modelo.ejercicios_pract4.ejercicio2_4 import ejercicio2_4
 from src.modelo.ejercicios_pract4.ejercicio3_4 import recuperar_runs_ordenadas
 from src.modelo.ejercicios_pract4.ejercicio4_4 import ejercicio4_4
 from src.modelo.ejercicios_pract4.ejercicio5_4 import ejercicio5_4
+from src.modelo.ejercicios_pract4.ejercicio6_4 import ejercicio6_4
+from src.modelo.ejercicios_pract4.ejercicio7_4 import ejercicio7_4
 
 from src.vista.vistas_pract4.vista_ejercicio1_4 import mostrar_ejercicio1_4
 from src.vista.vistas_pract4.vista_ejercicio2_4 import mostrar_ejercicio2_4
 from src.vista.vistas_pract4.vista_ejercicio3_4 import mostrar_ejercicio3_4
 from src.vista.vistas_pract4.vista_ejercicio4_4 import mostrar_ejercicio4_4
 from src.vista.vistas_pract4.vista_ejercicio5_4 import mostrar_ejercicio5_4
+from src.vista.vistas_pract4.vista_ejercicio6_4 import mostrar_ejercicio6_4
+from src.vista.vistas_pract4.vista_ejercicio7_4 import mostrar_ejercicio7_4
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
@@ -146,11 +150,11 @@ def ControladorPrincipal():
         mostrar_ejercicio_13(resultados_13)
         '''
     #PRÁCTICA 4
-
+        
         from src.modelo.leer_gold import cargar_apertura_cierre
 
         df_4 = cargar_apertura_cierre(spark_session).cache()
-
+        '''
         # Ejercicio 1
         resultados1_4 = ejercicio1_4(df_4, ks=range(2, 9))
         mostrar_ejercicio1_4(resultados1_4)
@@ -170,7 +174,14 @@ def ControladorPrincipal():
         # Ejercicio 5
         resultados5_4 = ejercicio5_4(spark_session)
         mostrar_ejercicio5_4(resultados5_4)
-            
+        '''
+        # Ejercicio 6
+        resultados6_4 = ejercicio6_4(spark_session)
+        mostrar_ejercicio6_4(resultados6_4)
+
+        # Ejercicio 7
+        resultados7_4 = ejercicio7_4(spark_session)
+        mostrar_ejercicio7_4(resultados7_4)
 
         print("FIN")
             

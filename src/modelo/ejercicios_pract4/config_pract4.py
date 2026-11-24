@@ -14,8 +14,12 @@ FEATURES = [COL_APERTURA, COL_CIERRE]
 SEED_MODELO = 1
 SEED_HYPEROPT = 42
 
-import os
 from pathlib import Path
 
 os.environ["MLFLOW_ALLOW_FILE_STORE"] = "true"
 MLFLOW_URI = str(Path("mlruns").resolve())
+
+COLS_BASE_CORR = ["Open", "High", "Low", "Close", "Volume", "Sentimiento"]
+COLS_CORRELACION = ["Open", "High", "Low", "Close", "Volume",
+                    "Return", "RangeLow", "RangeOpen", "Sentimiento"]
+COLS_BASE_RETURN = ["Open", "Close", "Sentimiento"]

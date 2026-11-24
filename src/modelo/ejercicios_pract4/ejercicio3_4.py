@@ -1,3 +1,6 @@
+#ejercicio 3 - práctica 4
+#recuperar runs del proyecto
+
 import mlflow
 from src.modelo.ejercicios_pract4.config_pract4 import MLFLOW_URI
 

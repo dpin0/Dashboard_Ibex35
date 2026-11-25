@@ -2,13 +2,13 @@ import mlflow
 import numpy as np
 from hyperopt import fmin, tpe, hp, Trials, STATUS_OK
 from src.modelo import kmeans
-from src.modelo.ejercicios_pract4 import config_pract4 as cfg
+from src.modelo.ejercicios_pract3.config_pract3 import MLFLOW_URI, SEED_MODELO, SEED_HYPEROPT
 
 
 def buscar_mejor_k(df, experimento: str, empresa: str, k_min: int = 2, k_max: int = 8, max_evals: int = 15) -> dict:
     """Prueba k entre k_min y k_max minimizando Davies-Bouldin y registra cada intento
     como una run del experimento indicado."""
-    mlflow.set_tracking_uri(cfg.MLFLOW_URI)
+    mlflow.set_tracking_uri(MLFLOW_URI)
     mlflow.set_experiment(experimento)
     espacio = {"k": hp.quniform("k", k_min, k_max, 1)}
 
@@ -17,12 +17,12 @@ def buscar_mejor_k(df, experimento: str, empresa: str, k_min: int = 2, k_max: in
         with mlflow.start_run(run_name=f"kmeans_k{k}"):
             # SEED 1 (modelo): fija la inicialización de los centroides de KMeans en Spark;
             # mismo k + mismas features => siempre el mismo clustering.
-            modelo = kmeans.entrenar(df, k, seed=cfg.SEED_MODELO)
+            modelo = kmeans.entrenar(df, k, seed=SEED_MODELO)
             db = kmeans.davies_bouldin(modelo.transform(df))
             mlflow.log_param("k", k)
             mlflow.log_param("empresa", empresa)
-            mlflow.log_param("seed_modelo", cfg.SEED_MODELO)
-            mlflow.log_param("seed_hyperopt", cfg.SEED_HYPEROPT)
+            mlflow.log_param("seed_modelo", SEED_MODELO)
+            mlflow.log_param("seed_hyperopt", SEED_HYPEROPT)
             mlflow.log_metric("davies_bouldin", db)
         return {"loss": db, "status": STATUS_OK}   # menor es mejor: se minimiza directamente
 

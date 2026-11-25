@@ -3,18 +3,18 @@ from pyspark.ml import Pipeline, PipelineModel
 from pyspark.ml.clustering import KMeans
 from pyspark.ml.evaluation import ClusteringEvaluator
 from pyspark.ml.feature import VectorAssembler, StandardScaler
-from src.modelo.ejercicios_pract4 import config_pract4 as cfg
+from src.modelo.ejercicios_pract3.config_pract3 import SEED_MODELO, FEATURES
 
 
-def construir_pipeline(k: int, seed: int = cfg.SEED_MODELO) -> Pipeline:
-    ensamblador = VectorAssembler(inputCols=cfg.FEATURES, outputCol="features")
+def construir_pipeline(k: int, seed: int = SEED_MODELO, features =FEATURES) -> Pipeline:
+    ensamblador = VectorAssembler(inputCols= list(features), outputCol="features")
     escalador = StandardScaler(inputCol="features", outputCol="scaled_features", withMean=True, withStd=True)
     kmeans = KMeans(featuresCol="scaled_features", predictionCol="prediction", k=k, seed=seed)
     return Pipeline(stages=[ensamblador, escalador, kmeans])
 
 
-def entrenar(df, k: int, seed: int = cfg.SEED_MODELO) -> PipelineModel:
-    return construir_pipeline(k, seed).fit(df)
+def entrenar(df, k: int, seed: int = SEED_MODELO, features = FEATURES) -> PipelineModel:
+    return construir_pipeline(k, seed, features).fit(df)
 
 
 def silhouette(predicciones) -> float:

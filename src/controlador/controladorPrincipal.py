@@ -47,21 +47,25 @@ from src.vista.vistas_pract1.vista_ejercicio13 import mostrar_ejercicio_13
 
 # Práctica 4
 
-from src.modelo.ejercicios_pract4.ejercicio1_4 import ejercicio1_4
-from src.modelo.ejercicios_pract4.ejercicio2_4 import ejercicio2_4
-from src.modelo.ejercicios_pract4.ejercicio3_4 import recuperar_runs_ordenadas
-from src.modelo.ejercicios_pract4.ejercicio4_4 import ejercicio4_4
-from src.modelo.ejercicios_pract4.ejercicio5_4 import ejercicio5_4
-from src.modelo.ejercicios_pract4.ejercicio6_4 import ejercicio6_4
-from src.modelo.ejercicios_pract4.ejercicio7_4 import ejercicio7_4
+from src.modelo.ejercicios_pract3.ejercicio1_3 import ejercicio1_3
+from src.modelo.ejercicios_pract3.ejercicio2_3 import ejercicio2_3
+from src.modelo.ejercicios_pract3.ejercicio3_3 import recuperar_runs_ordenadas
+from src.modelo.ejercicios_pract3.ejercicio4_3 import ejercicio4_3
+from src.modelo.ejercicios_pract3.ejercicio5_3 import ejercicio5_3
+from src.modelo.ejercicios_pract3.ejercicio6_3 import ejercicio6_3
+from src.modelo.ejercicios_pract3.ejercicio7_3 import ejercicio7_3
+from src.modelo.ejercicios_pract3.ejercicio8_3 import ejercicio8_3
+from src.modelo.ejercicios_pract3.ejercicio9_3 import ejercicio9_3
 
-from src.vista.vistas_pract4.vista_ejercicio1_4 import mostrar_ejercicio1_4
-from src.vista.vistas_pract4.vista_ejercicio2_4 import mostrar_ejercicio2_4
-from src.vista.vistas_pract4.vista_ejercicio3_4 import mostrar_ejercicio3_4
-from src.vista.vistas_pract4.vista_ejercicio4_4 import mostrar_ejercicio4_4
-from src.vista.vistas_pract4.vista_ejercicio5_4 import mostrar_ejercicio5_4
-from src.vista.vistas_pract4.vista_ejercicio6_4 import mostrar_ejercicio6_4
-from src.vista.vistas_pract4.vista_ejercicio7_4 import mostrar_ejercicio7_4
+from src.vista.vistas_pract3.vista_ejercicio1_3 import mostrar_ejercicio1_3
+from src.vista.vistas_pract3.vista_ejercicio2_3 import mostrar_ejercicio2_3
+from src.vista.vistas_pract3.vista_ejercicio3_3 import mostrar_ejercicio3_3
+from src.vista.vistas_pract3.vista_ejercicio4_3 import mostrar_ejercicio4_3
+from src.vista.vistas_pract3.vista_ejercicio5_3 import mostrar_ejercicio5_3
+from src.vista.vistas_pract3.vista_ejercicio6_3 import mostrar_ejercicio6_3
+from src.vista.vistas_pract3.vista_ejercicio7_3 import mostrar_ejercicio7_3
+from src.vista.vistas_pract3.vista_ejercicio8_3 import mostrar_ejercicio8_3
+from src.vista.vistas_pract3.vista_ejercicio9_3 import mostrar_ejercicio9_3
 
 def ControladorPrincipal():
     print(">>> Controlador iniciado")
@@ -149,40 +153,48 @@ def ControladorPrincipal():
         resultados_13 = ejercicio13(spark_session)
         mostrar_ejercicio_13(resultados_13)
         '''
-    #PRÁCTICA 4
+    #PRÁCTICA 3
         
         from src.modelo.leer_gold import cargar_apertura_cierre
 
-        df_4 = cargar_apertura_cierre(spark_session).cache()
+        df_3 = cargar_apertura_cierre(spark_session).cache()
         '''
         # Ejercicio 1
-        resultados1_4 = ejercicio1_4(df_4, ks=range(2, 9))
-        mostrar_ejercicio1_4(resultados1_4)
+        resultados1_3 = ejercicio1_3(df_3, ks=range(2, 9))
+        mostrar_ejercicio1_3(resultados1_3)
 
         # Ejercicio 2
-        resultados2_4 = ejercicio2_4(df_4)
-        mostrar_ejercicio2_4(resultados2_4)
+        resultados2_3 = ejercicio2_4(df_3)
+        mostrar_ejercicio2_3(resultados2_3)
 
         # Ejercicio 3
-        resultados3_4 = recuperar_runs_ordenadas()
-        mostrar_ejercicio3_4(resultados3_4)
+        resultados3_3 = recuperar_runs_ordenadas()
+        mostrar_ejercicio3_3(resultados3_3)
 
         # Ejercicio 4
-        resultados4_4 = ejercicio4_4(spark_session, k=3, version=1)
-        mostrar_ejercicio4_4(resultados4_4)
+        resultados4_3 = ejercicio4_3(spark_session, k=3, version=1)
+        mostrar_ejercicio4_3(resultados4_3)
 
         # Ejercicio 5
-        resultados5_4 = ejercicio5_4(spark_session)
-        mostrar_ejercicio5_4(resultados5_4)
+        resultados5_3 = ejercicio5_3(spark_session)
+        mostrar_ejercicio5_3(resultados5_3)
         '''
         # Ejercicio 6
-        resultados6_4 = ejercicio6_4(spark_session)
-        mostrar_ejercicio6_4(resultados6_4)
+        resultados6_3 = ejercicio6_3(spark_session)
+        mostrar_ejercicio6_3(resultados6_3)
 
         # Ejercicio 7
-        resultados7_4 = ejercicio7_4(spark_session)
-        mostrar_ejercicio7_4(resultados7_4)
+        resultados7_3 = ejercicio7_3(spark_session)
+        mostrar_ejercicio7_3(resultados7_3)
 
+        # Ejercicio 8
+        resultados8_3 = ejercicio8_3(spark_session)
+        mostrar_ejercicio8_3(resultados8_3)
+
+        # Ejercicio 9
+        resultados9_3 = ejercicio9_3(spark_session)
+        mostrar_ejercicio9_3(resultados9_3)
+    
         print("FIN")
             
     finally:

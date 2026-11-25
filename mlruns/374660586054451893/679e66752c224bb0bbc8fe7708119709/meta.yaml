@@ -1,0 +1,14 @@
+artifact_uri: c:\Users\USUARIO\Desktop\MD\dpinoc00_practica4\mlruns/374660586054451893/679e66752c224bb0bbc8fe7708119709/artifacts
+end_time: 1795555962515
+entry_point_name: ''
+experiment_id: '374660586054451893'
+lifecycle_stage: active
+run_id: 679e66752c224bb0bbc8fe7708119709
+run_name: gmm_k3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1795555958142
+status: 3
+tags: []
+user_id: USUARIO

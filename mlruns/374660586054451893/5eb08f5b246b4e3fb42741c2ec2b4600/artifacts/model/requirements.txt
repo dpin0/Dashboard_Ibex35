@@ -1,2 +1,0 @@
-mlflow==3.18.0
-pyspark==4.0.1

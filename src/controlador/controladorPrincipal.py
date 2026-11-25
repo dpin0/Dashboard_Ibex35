@@ -158,7 +158,7 @@ def ControladorPrincipal():
         from src.modelo.leer_gold import cargar_apertura_cierre
 
         df_3 = cargar_apertura_cierre(spark_session).cache()
-        '''
+        
         # Ejercicio 1
         resultados1_3 = ejercicio1_3(df_3, ks=range(2, 9))
         mostrar_ejercicio1_3(resultados1_3)
@@ -178,7 +178,7 @@ def ControladorPrincipal():
         # Ejercicio 5
         resultados5_3 = ejercicio5_3(spark_session)
         mostrar_ejercicio5_3(resultados5_3)
-        '''
+        
         # Ejercicio 6
         resultados6_3 = ejercicio6_3(spark_session)
         mostrar_ejercicio6_3(resultados6_3)

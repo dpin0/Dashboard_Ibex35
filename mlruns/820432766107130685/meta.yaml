@@ -1,0 +1,9 @@
+artifact_location: c:\Users\USUARIO\Desktop\MD\dpinoc00_practica3\mlruns/820432766107130685
+creation_time: 1795648525025
+effective_trace_archival_retention: null
+experiment_id: '820432766107130685'
+last_update_time: 1795648525025
+lifecycle_stage: active
+name: kmeans_BBVA_ej1
+trace_location: null
+workspace: default

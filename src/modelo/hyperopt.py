@@ -30,7 +30,7 @@ def buscar_mejor_k(df, experimento: str, empresa: str, k_min: int = 2, k_max: in
     # SEED 42 (Hyperopt): fija (rstate) qué valores de k propone TPE en cada iteración,
     # haciendo reproducible la búsqueda (qué combinaciones se prueban y en qué orden).
     mejor = fmin(fn=objetivo, space=espacio, algo=tpe.suggest, max_evals=max_evals,
-                 trials=trials, rstate=np.random.default_rng(cfg.SEED_HYPEROPT))
+                 trials=trials, rstate=np.random.default_rng(SEED_HYPEROPT))
     return {"empresa": empresa, "mejor_k": int(mejor["k"]), "mejor_loss": min(trials.losses()),
             "intentos": [(int(t["misc"]["vals"]["k"][0]), t["result"]["loss"])
                          for t in trials.trials]}

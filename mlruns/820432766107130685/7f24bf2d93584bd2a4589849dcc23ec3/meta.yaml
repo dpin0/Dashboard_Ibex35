@@ -1,0 +1,14 @@
+artifact_uri: c:\Users\USUARIO\Desktop\MD\dpinoc00_practica3\mlruns/820432766107130685/7f24bf2d93584bd2a4589849dcc23ec3/artifacts
+end_time: 1795648936351
+entry_point_name: ''
+experiment_id: '820432766107130685'
+lifecycle_stage: active
+run_id: 7f24bf2d93584bd2a4589849dcc23ec3
+run_name: kmeans_k6
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1795648926325
+status: 3
+tags: []
+user_id: USUARIO

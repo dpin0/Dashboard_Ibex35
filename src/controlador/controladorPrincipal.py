@@ -164,7 +164,7 @@ def ControladorPrincipal():
         mostrar_ejercicio1_3(resultados1_3)
 
         # Ejercicio 2
-        resultados2_3 = ejercicio2_4(df_3)
+        resultados2_3 = ejercicio2_3(df_3)
         mostrar_ejercicio2_3(resultados2_3)
 
         # Ejercicio 3
